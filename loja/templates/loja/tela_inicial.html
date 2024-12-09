@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema de Gerenciamento da Loja</h1>
+    <p>Escolha uma opção para acessar:</p>
+    <div>
+        <a href="{% url 'lista_categorias' %}">
+            <button type="button">Categorias</button>
+        </a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'lista_produtos' %}">
+            <button type="button">Produtos</button>
+        </a>
+    </div>
+</body>
+</html>

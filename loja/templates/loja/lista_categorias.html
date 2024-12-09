@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Categorias</title>
+</head>
+<body>
+    <h1>Lista de Categorias</h1>
+    <div>
+        <a href="{% url 'nova_categoria' %}">
+            <button type="button">Adicionar Nova Categoria</button>
+        </a>
+    </div>
+    <br>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+        {% for categoria in categorias %}
+            <tr>
+                <td>{{ categoria.nome }}</td>
+                <td>
+                    <a href="{% url 'edita_categoria' categoria.id %}">Editar</a> |
+                    <a href="{% url 'remove_categoria' categoria.id %}">Excluir</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'tela_inicial' %}">Voltar para a Tela Inicial</a>
+</body>
+</html>

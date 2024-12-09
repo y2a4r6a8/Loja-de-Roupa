@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Produto</title>
+</head>
+<body>
+    <h1>Adicionar Novo Produto</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="nome">Nome do Produto:</label><br>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <br>
+        <div>
+            <label for="descricao">Descrição:</label><br>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+        </div>
+        <br>
+        <div>
+            <label for="preco">Preço:</label><br>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+        </div>
+        <br>
+        <div>
+            <label for="quantidade">Quantidade:</label><br>
+            <input type="number" id="quantidade" name="quantidade" min="0" required>
+        </div>
+        <br>
+        <div>
+            <label for="categoria">Categoria:</label><br>
+            <select id="categoria" name="categoria" required>
+                <option value="">-- Selecione uma Categoria --</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Salvar">
+            <a href="{% url 'lista_produtos' %}">Cancelar</a>
+        </div>
+    </form>
+
+    <p>
+        <a href="{% url 'lista_produtos' %}">Voltar para a lista de produtos</a>
+    </p>
+</body>
+</html>
